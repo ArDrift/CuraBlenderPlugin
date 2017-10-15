@@ -1,0 +1,7 @@
+{
+    "name": "Blender integration",
+    "author": "Thomas Karl Pietrowski",
+    "version": "0.0.1",
+    "api": 4,
+    "description": "Helps to open Blender files directly in Cura."
+}
