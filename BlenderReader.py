@@ -45,6 +45,6 @@ class BlenderReader(CommonCLIReader):
         Logger.log("d", "CMD: {}".format(cmd))
         
         subprocess.call(cmd,
-                        cwd = os.path.split(options["foreignFile"])[0]
+                        cwd = os.path.split(options["foreignFile"])[0],
                         shell = False,
                         )
