@@ -2,7 +2,6 @@
 
 import os
 import platform
-import subprocess
 
 from UM.Logger import Logger # @UnresolvedImport
 
@@ -16,6 +15,8 @@ class BlenderReader(CommonCLIReader):
         super().__init__("Blender")
         self._supported_extensions = [".BLEND".lower(),
                                       ]
+        
+        self.scanForAllPaths()
 
     def areReadersAvailable(self):
         return bool(self._readerForFileformat)
@@ -24,13 +25,11 @@ class BlenderReader(CommonCLIReader):
     def openForeignFile(self, options):
         return options
     
-    def exportFileAs(self, options):
+    def exportFileAs(self, options, quality_enum = None):
 
         # Use the appropriate command for the current OS
         if platform.system() == 'Darwin':
             cmd = '/Applications/Blender.app/Contents/MacOS/blender'
-        elif platform.system() == 'Windows':
-            cmd = 'blender.exe'
         else:
             cmd = 'blender'
 
@@ -42,9 +41,4 @@ class BlenderReader(CommonCLIReader):
         
         cmd = [cmd, options["foreignFile"], "--background", "--python", os.path.join(bpy_scripts, "ExportAsStl.py"), "--", options["tempFile"]]
         
-        Logger.log("d", "CMD: {}".format(cmd))
-        
-        subprocess.call(cmd,
-                        cwd = os.path.split(options["foreignFile"])[0],
-                        shell = False,
-                        )
+        self.executeCommand(cmd, cwd = os.path.split(options["foreignFile"])[0])
