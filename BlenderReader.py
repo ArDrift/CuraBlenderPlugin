@@ -15,16 +15,17 @@ class BlenderReader(CommonCLIReader):
         super().__init__("Blender")
         self._supported_extensions = [".BLEND".lower(),
                                       ]
-        
+
         self.scanForAllPaths()
 
     def areReadersAvailable(self):
         return bool(self._readerForFileformat)
 
-
     def openForeignFile(self, options):
-        return options
-    
+        options["fileFormats"].append("stl")
+
+        return super().openForeignFile(options)
+
     def exportFileAs(self, options, quality_enum = None):
 
         # Use the appropriate command for the current OS
@@ -34,11 +35,11 @@ class BlenderReader(CommonCLIReader):
             cmd = 'blender'
 
         bpy_scripts = os.path.join(os.path.split(__file__)[0], "BpyScripts")
-        
+
         Logger.log("d", "BpyScripts at: {}".format(bpy_scripts))
         Logger.log("d", "Using blender file at: {}".format(options["foreignFile"]))
         Logger.log("d", "Exporting to: {}".format(options["tempFile"]))
-        
+
         cmd = [cmd, options["foreignFile"], "--background", "--python", os.path.join(bpy_scripts, "ExportAsStl.py"), "--", options["tempFile"]]
-        
+
         self.executeCommand(cmd, cwd = os.path.split(options["foreignFile"])[0])
