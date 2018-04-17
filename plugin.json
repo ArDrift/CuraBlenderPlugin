@@ -2,6 +2,7 @@
     "name": "Blender Integration",
     "author": "Thomas Karl Pietrowski",
     "version": "0.1.0",
+    "website": "https://thopiekar.eu/cura/plugins/cad/blender/",
     "api": 4,
     "description": "Helps to open Blender files directly in Cura."
 }
