@@ -5,7 +5,7 @@ from UM.Platform import Platform
 from UM.Logger import Logger
 
 from UM.i18n import i18nCatalog
-i18n_catalog = i18nCatalog("CuraCatiaIntegrationPlugin")
+i18n_catalog = i18nCatalog("CuraBlenderIntegrationPlugin")
 
 def getMetaData():
     return {
