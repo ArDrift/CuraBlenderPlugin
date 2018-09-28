@@ -3,9 +3,15 @@
 import os
 import platform
 
+from UM.Application import Application # @UnresolvedImport
 from UM.Logger import Logger # @UnresolvedImport
-
 from UM.i18n import i18nCatalog # @UnresolvedImport
+from UM.Version import Version # @UnresolvedImport
+
+# Since 3.4: Register Mimetypes:
+if Version("3.4") <= Version(Application.getInstance().getVersion()):
+    from UM.MimeTypeDatabase import MimeTypeDatabase, MimeType
+
 i18n_catalog = i18nCatalog("CuraBlenderIntegrationPlugin")
 
 from .CadIntegrationUtils.CommonCLIReader import CommonCLIReader # @UnresolvedImport
@@ -13,6 +19,15 @@ from .CadIntegrationUtils.CommonCLIReader import CommonCLIReader # @UnresolvedIm
 class BlenderReader(CommonCLIReader):
     def __init__(self):
         super().__init__("Blender")
+
+        if Version("3.4") <= Version(Application.getInstance().getVersion()):
+            MimeTypeDatabase.addMimeType(MimeType(name = "application/x-extension-blend",
+                                                  comment="Blender files",
+                                                  suffixes=["BLEND"]
+                                                  )
+                                         )
+
+
         self._supported_extensions = [".BLEND".lower(),
                                       ]
 

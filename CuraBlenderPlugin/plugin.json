@@ -3,9 +3,9 @@
     "id" : "CuraBlenderPlugin",
     "author": "Thomas Karl Pietrowski",
     "email" : "thopiekar@gmail.com",
-    "version": "0.1.1",
+    "version": "0.2.2",
     "website": "https://thopiekar.eu/cura/plugins/cad/blender/",
-    "api": 4,
+    "api": 5,
     "description": "Helps to open Blender files directly in Cura.",
     "i18n-catalog" : "CuraBlenderIntegrationPlugin"
 }
