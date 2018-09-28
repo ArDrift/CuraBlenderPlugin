@@ -3,6 +3,7 @@
 import os
 import platform
 
+from UM.Application import Application # @UnresolvedImport
 from UM.Logger import Logger # @UnresolvedImport
 from UM.i18n import i18nCatalog # @UnresolvedImport
 from UM.Version import Version # @UnresolvedImport
