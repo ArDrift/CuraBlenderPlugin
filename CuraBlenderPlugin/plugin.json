@@ -5,7 +5,7 @@
     "email" : "thopiekar@gmail.com",
     "version": "0.2.2",
     "website": "https://thopiekar.eu/cura/plugins/cad/blender/",
-    "api": 5,
+    "api": "6.0.0",
     "description": "Helps to open Blender files directly in Cura.",
     "i18n-catalog" : "CuraBlenderIntegrationPlugin"
 }
