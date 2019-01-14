@@ -1,0 +1,21 @@
+{
+    "package_id": "CuraBlenderPlugin",
+    "package_type": "plugin",
+    "display_name": "Blender Integration",
+    "description": "Helps to open Blender files directly in Cura.",
+    "package_version": "0.2.3",
+    "sdk_version": "6.0.0",
+    "website": "https://thopiekar.eu/cura/plugins/cad/blender/",
+    "author": {
+        "author_id": "thopiekar",
+        "display_name": "Thomas Karl Pietrowski",
+        "email": "thopiekar@gmail.com",
+        "website": "https://thopiekar.eu"
+    },
+    "tags": [
+        "Blender",
+        "blend",
+        "cad-integration",
+        "3rd-party"
+    ]
+}
