@@ -3,7 +3,7 @@
     "id" : "CuraBlenderPlugin",
     "author": "Thomas Karl Pietrowski",
     "email" : "thopiekar@gmail.com",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "website": "https://thopiekar.eu/cura/plugins/cad/blender/",
     "supported_sdk_versions": ["6.0.0"],
     "api": "6.0.0",
