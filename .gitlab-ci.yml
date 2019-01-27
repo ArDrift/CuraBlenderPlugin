@@ -4,9 +4,9 @@ stages:
 all:
   stage: build
   tags:
-  - os:ubuntu,
-  - package:python3
-  - type:shell
+    - os:ubuntu,
+    - package:python3
+    - type:shell
   before_script:
     - git submodule sync --recursive
     - git submodule update --init --recursive
