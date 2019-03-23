@@ -31,7 +31,7 @@ class BlenderReader(CommonCLIReader):
         self._supported_extensions = [".BLEND".lower(),
                                       ]
 
-        self.scanForAllPaths()
+        self.findPathsForAllExtensions()
 
     def areReadersAvailable(self):
         return bool(self._readerForFileformat)
