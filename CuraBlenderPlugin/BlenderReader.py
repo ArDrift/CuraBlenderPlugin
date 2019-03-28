@@ -31,7 +31,7 @@ class BlenderReader(CommonCLIReader):
         self._supported_extensions = [".BLEND".lower(),
                                       ]
 
-        self.scanForAllPaths()
+        self.findPathsForAllExtensions()
 
     def areReadersAvailable(self):
         return bool(self._readerForFileformat)
@@ -42,13 +42,7 @@ class BlenderReader(CommonCLIReader):
         return super().openForeignFile(options)
 
     def exportFileAs(self, options, quality_enum = None):
-
-        # Use the appropriate command for the current OS
-        if platform.system() == 'Darwin':
-            cmd = '/Applications/Blender.app/Contents/MacOS/blender'
-        else:
-            cmd = 'blender'
-
+        cmd = 'blender'
         bpy_scripts = os.path.join(os.path.split(__file__)[0], "BpyScripts")
 
         Logger.log("d", "BpyScripts at: {}".format(bpy_scripts))
