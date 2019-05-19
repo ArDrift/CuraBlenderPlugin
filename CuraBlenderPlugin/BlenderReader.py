@@ -18,7 +18,7 @@ from .CadIntegrationUtils.CommonCLIReader import CommonCLIReader # @UnresolvedIm
 
 class BlenderReader(CommonCLIReader):
     def __init__(self):
-        super().__init__("Blender")
+        super().__init__()
 
         if Version("3.4") <= Version(Application.getInstance().getVersion()):
             MimeTypeDatabase.addMimeType(MimeType(name = "application/x-extension-blend",
