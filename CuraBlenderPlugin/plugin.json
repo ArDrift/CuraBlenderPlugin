@@ -5,7 +5,7 @@
     "email" : "thopiekar@gmail.com",
     "version": "0.3.0",
     "website": "https://thopiekar.eu/cura/plugins/cad/blender/",
-    "supported_sdk_versions": ["5.0.0", "6.0.0"],
+    "supported_sdk_versions": ["5.0.0", "6.0.0", "6.1.0"],
     "api": 5,
     "minimum_api": 4,
     "description": "Helps to open Blender files directly in Cura.",
