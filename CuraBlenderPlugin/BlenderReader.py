@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Thomas Karl Pietrowski
+# Copyright (c) 2019 Thomas Karl Pietrowski
 
 import os
 import platform
@@ -22,7 +22,7 @@ class BlenderReader(CommonCLIReader):
         super().__init__()
 
         if Version("3.4") <= Version(Application.getInstance().getVersion()):
-            MimeTypeDatabase.addMimeType(MimeType(name = "application/x-extension-blend",
+            MimeTypeDatabase.addMimeType(MimeType(name="application/x-extension-blend",
                                                   comment="Blender files",
                                                   suffixes=["BLEND"]
                                                   )

@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Thomas Karl Pietrowski
+# Copyright (c) 2019 Thomas Karl Pietrowski
 
 __plugin_name__ = "Blender plugin"
 __plugin_id__ = "CuraBlenderPlugin"
@@ -23,13 +23,14 @@ def getMetaData():
         ]
     }
 
+
 def register(app):
     plugin_data = {}
     try:
         reader = BlenderReader.BlenderReader()
         plugin_data["mesh_reader"] = reader
     except:
-        Logger.logException("e", "An error occured, when trying to import BlenderReader!")
+        Logger.logException("e", "An error occured, when loading the reader!")
         return {}
 
     return plugin_data
