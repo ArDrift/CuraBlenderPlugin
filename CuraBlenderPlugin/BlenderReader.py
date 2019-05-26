@@ -3,10 +3,10 @@
 import os
 import platform
 
-from UM.Application import Application # @UnresolvedImport
-from UM.Logger import Logger # @UnresolvedImport
-from UM.i18n import i18nCatalog # @UnresolvedImport
-from UM.Version import Version # @UnresolvedImport
+from UM.Application import Application  # @UnresolvedImport
+from UM.Logger import Logger  # @UnresolvedImport
+from UM.i18n import i18nCatalog  # @UnresolvedImport
+from UM.Version import Version  # @UnresolvedImport
 
 # Since 3.4: Register Mimetypes:
 if Version("3.4") <= Version(Application.getInstance().getVersion()):
@@ -14,7 +14,8 @@ if Version("3.4") <= Version(Application.getInstance().getVersion()):
 
 i18n_catalog = i18nCatalog("CuraBlenderIntegrationPlugin")
 
-from .CadIntegrationUtils.CommonCLIReader import CommonCLIReader # @UnresolvedImport
+from .CadIntegrationUtils.CommonCLIReader import CommonCLIReader  # @UnresolvedImport
+
 
 class BlenderReader(CommonCLIReader):
     def __init__(self):
@@ -26,7 +27,6 @@ class BlenderReader(CommonCLIReader):
                                                   suffixes=["BLEND"]
                                                   )
                                          )
-
 
         self._supported_extensions = [".BLEND".lower(),
                                       ]
@@ -41,7 +41,7 @@ class BlenderReader(CommonCLIReader):
 
         return super().openForeignFile(options)
 
-    def exportFileAs(self, options, quality_enum = None):
+    def exportFileAs(self, options, quality_enum=None):
         cmd = 'blender'
         bpy_scripts = os.path.join(os.path.split(__file__)[0], "BpyScripts")
 
@@ -49,6 +49,13 @@ class BlenderReader(CommonCLIReader):
         Logger.log("d", "Using blender file at: {}".format(options["foreignFile"]))
         Logger.log("d", "Exporting to: {}".format(options["tempFile"]))
 
-        cmd = [cmd, options["foreignFile"], "--background", "--python", os.path.join(bpy_scripts, "ExportAsStl.py"), "--", options["tempFile"]]
+        cmd = [cmd,
+               options["foreignFile"],
+               "--background",
+               "--python",
+               os.path.join(bpy_scripts, "ExportAsStl.py"),
+               "--",
+               options["tempFile"],
+               ]
 
-        self.executeCommand(cmd, cwd = os.path.split(options["foreignFile"])[0])
+        self.executeCommand(cmd, cwd=os.path.split(options["foreignFile"])[0])
