@@ -1,6 +1,8 @@
 import sys
 import bpy
 
+legacy_mode = bpy.app.version < (2, 80, 0)
+
 ignorable_object_types = ("EMPTY", "LAMP", "CAMERA")
 
 stl_path = sys.argv[-1]
@@ -8,9 +10,15 @@ stl_path = sys.argv[-1]
 def deselect_all():
     # Deselect everything
     for ob in bpy.context.selected_objects:
-        ob.select = False
+        if legacy_mode:
+            ob.select = False
+        else:
+            ob.select_set(False)
 
-scene = bpy.context.scene
+if legacy_mode:
+    scene = bpy.context.scene
+else:
+    scene = bpy.context.view_layer
 
 # Getting all children of all objects
 children = []
@@ -26,7 +34,10 @@ for obj in scene.objects:
     print("Processing object {} of type: {}".format(repr(obj.name), obj.type))
     scene.objects.active = obj
 
-    obj.select = True
+    if legacy_mode:
+        obj.select = True
+    else:
+        obj.select_set(True)
 
     mode_changed = False
     try:
@@ -52,8 +63,12 @@ for obj in scene.objects:
     print("Processing object {} of type: {}".format(repr(obj.name), obj.type))
     scene.objects.active = obj
 
-    if not obj.hide:
-        obj.select = True
+    if legacy_mode:
+        if not obj.hide:
+            obj.select = True
+    else:
+        if not obj.hide_viewport:
+            obj.select_set(True)
 
 # Export everything at once
 bpy.ops.export_mesh.stl(filepath = stl_path,
